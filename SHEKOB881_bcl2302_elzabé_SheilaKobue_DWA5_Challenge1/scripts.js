@@ -28,10 +28,19 @@ form.addEventListener("submit", (event) => {
 
 if (divider === "" || dividend === ""){
     result.innerText = "Division not performed. Both values are required in inputs. Try again.";
+    
 } else if (divider <= 0 || dividend <= 0) {
   result.innerText = "Division not performed. Invalid number provided. Try again.";
+
+}else if (isNaN(dividend) || isNaN(divider)) {
+    
+    console.error("Invalid input. Expected numbers.");
+    console.trace(); // Logs call stack
+    document.body.innerHTML = "Something critical went wrong. Please reload the page."; // Clear the screen
   
 } else {
-  result.innerText = dividend / divider;
+  const resultForDivision = dividend / divider;
+  result.innerText = Math.floor(resultForDivision)
 }
+
 });
