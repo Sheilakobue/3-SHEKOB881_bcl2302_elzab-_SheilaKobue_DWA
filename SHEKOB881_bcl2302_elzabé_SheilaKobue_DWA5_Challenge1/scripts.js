@@ -25,7 +25,7 @@ form.addEventListener("submit", (event) => {
   const {dividend,divider}=Object.fromEntries(entries);
  
   const isWholeNumber = Number.isInteger(result); // checks if results is a whole number
-
+try{
 if (divider === "" || dividend === ""){
     result.innerText = "Division not performed. Both values are required in inputs. Try again.";
     
@@ -37,10 +37,16 @@ if (divider === "" || dividend === ""){
     console.error("Invalid input. Expected numbers.");
     console.trace(); // Logs call stack
     document.body.innerHTML = "Something critical went wrong. Please reload the page."; // Clear the screen
-  
+
 } else {
   const resultForDivision = dividend / divider;
   result.innerText = Math.floor(resultForDivision)
 }
 
+
+ } catch (error) {
+    console.error("Invalid input. Expected numbers.");
+    console.trace(); // Logs call stack
+    document.body.innerHTML = "Something critical went wrong. Please reload the page."; // Clear the screen
+  }
 });
