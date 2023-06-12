@@ -5,14 +5,15 @@ import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
 let page = 1;
 let matches = books
 
-//preview function
+//created preview function
+//The code defines a function named 'preview' that is responsible for creating a button element representing a book preview
+//it takes parameters for the author, id, image, and title of the book
 
 const preview = (author, id, image, title) => {
-
+// create a button element
     const element = document.createElement('button')
     element.classList = 'preview'
     element.setAttribute('data-preview', id)
-
      // Set innerHTML for the button element
     element.innerHTML = `
         <img
@@ -25,17 +26,17 @@ const preview = (author, id, image, title) => {
             <div class="preview__author">${authors[author]}</div>
         </div>
     `
- // Append the button element to the starting document fragment
+ // The button element is then appended to a document fragment.
     fragment.appendChild(element)
 }
 
 const fragment = document.createDocumentFragment()
 
 /** 
-  * The code then creates book previews for the initial page.
-  * Code to set class, attributes, and innerHTML for the button element 
+* starting preview for the first 36 books
+*Code to set class, attributes, and innerHTML for the button element 
 */
-//starting preview for the first 36 books
+
 for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
 // Create button element
    preview(
@@ -60,7 +61,7 @@ const firstElement = document.createElement('option')
       fragment.appendChild(firstElement)
 
 /**
- * Create option elements for each genre
+ * Create option elements for each genre ot author
  */
 
 for (const [id, name] of Object.entries(genreOrAuthor)) {
@@ -73,11 +74,12 @@ return fragment
 }
     
 
-//genre options
+//Generate genre options
 
 const genreOptions = createOptions("All Genres", genres)
 document.querySelector('[data-search-genres]').appendChild(genreOptions)
 
+//Generate author option
 const authorsHtml = createOptions("All Authors", authors)
 document.querySelector('[data-search-authors]').appendChild(authorsHtml)
 
@@ -126,6 +128,9 @@ const handlesetting = ()=>{
     const formData = new FormData(event.target)
     const { theme } = Object.fromEntries(formData)
 
+    /**
+     * Setting Theme based on User Preference
+     */
 if (theme === 'night') {
     document.documentElement.style.setProperty('--color-dark', '255, 255, 255');
     document.documentElement.style.setProperty('--color-light', '10, 10, 20');
