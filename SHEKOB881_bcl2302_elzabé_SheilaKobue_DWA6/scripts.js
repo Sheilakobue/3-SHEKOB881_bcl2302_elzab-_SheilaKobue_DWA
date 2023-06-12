@@ -113,14 +113,14 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 /**
  * Adding Event Listeners:
  */
-const handlesetting = ()=>{
+const handleSetting = ()=>{
     document.querySelector('[data-search-overlay]').toggleAttribute('open')
     
 };
 
-    document.querySelector('[data-header-search]').addEventListener('click', handlesetting)   
-    document.querySelector('[data-search-cancel]').addEventListener('click', handlesetting)
-        html.search.title.focus()
+    document.querySelector('[data-header-search]').addEventListener('click', handleSetting)   
+    document.querySelector('[data-search-cancel]').addEventListener('click', handleSetting)
+        event.search.title.focus()
     
     document.querySelector('[data-settings-form]').addEventListener('submit', (event) => {
     event.preventDefault()
