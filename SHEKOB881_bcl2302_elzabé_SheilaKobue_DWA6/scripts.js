@@ -7,7 +7,7 @@ let matches = books
 
 const starting = document.createDocumentFragment()
 
-for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
+const createPreviewFunction = (author, id, image, title ) =>{
     const element = document.createElement('button')
     element.classList = 'preview'
     element.setAttribute('data-preview', id)
@@ -23,11 +23,10 @@ for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
             <div class="preview__author">${authors[author]}</div>
         </div>
     `
-
-    starting.appendChild(element)
+    fragment.appendChild(element)
 }
 
-document.querySelector('[data-list-items]').appendChild(starting)
+const fragment = document.createDocumentFragment()
 
 const genreHtml = document.createDocumentFragment()
 const firstGenreElement = document.createElement('option')
@@ -35,29 +34,33 @@ firstGenreElement.value = 'any'
 firstGenreElement.innerText = 'All Genres'
 genreHtml.appendChild(firstGenreElement)
 
-for (const [id, name] of Object.entries(genres)) {
-    const element = document.createElement('option')
-    element.value = id
-    element.innerText = name
-    genreHtml.appendChild(element)
+for (const {author,id, image, title} of matches.slice(0, BOOKS_PER_PAGE)) {
+    createPreviewFunction(
+        author,
+        id,
+        image,
+        title,
+    )
 }
 
 document.querySelector('[data-search-genres]').appendChild(genreHtml)
 
-const authorsHtml = document.createDocumentFragment()
-const firstAuthorElement = document.createElement('option')
-firstAuthorElement.value = 'any'
-firstAuthorElement.innerText = 'All Authors'
-authorsHtml.appendChild(firstAuthorElement)
+const createOption = (option, genreOrAuthor, any)=> {
+    const fragment = document.createDocumentFragment()
+    const firstAuthorElement = document.createElement('option')
+    firstAuthorElement.value = 'any'
+    firstAuthorElement.innerText = option
+    fragment.appendChild(firstAuthorElement)
 
 for (const [id, name] of Object.entries(authors)) {
     const element = document.createElement('option')
     element.value = id
     element.innerText = name
-    authorsHtml.appendChild(element)
+   fragment.appendChild(element)
 }
 
-document.querySelector('[data-search-authors]').appendChild(authorsHtml)
+return fragment
+}
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.querySelector('[data-settings-theme]').value = 'night'
