@@ -1,13 +1,10 @@
-// Fully working scripts.js file
-
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
 
 let page = 1;
 let matches = books
 
-const starting = document.createDocumentFragment()
 
-const createPreviewFunction = (author, id, image, title ) =>{
+const createPreviewElement = (author, id, image, title) => {
     const element = document.createElement('button')
     element.classList = 'preview'
     element.setAttribute('data-preview', id)
@@ -23,44 +20,44 @@ const createPreviewFunction = (author, id, image, title ) =>{
             <div class="preview__author">${authors[author]}</div>
         </div>
     `
-    fragment.appendChild(element)
+
+    return element;
 }
 
-const fragment = document.createDocumentFragment()
+const appendPreviewElementToFragment = (element, fragment) => {
+    fragment.appendChild(element);
+};
 
+const initializeGenreOptions = () => {
 const genreHtml = document.createDocumentFragment()
 const firstGenreElement = document.createElement('option')
 firstGenreElement.value = 'any'
 firstGenreElement.innerText = 'All Genres'
 genreHtml.appendChild(firstGenreElement)
 
-for (const {author,id, image, title} of matches.slice(0, BOOKS_PER_PAGE)) {
-    createPreviewFunction(
-        author,
-        id,
-        image,
-        title,
-    )
+for (const [id, name] of Object.entries(genres)) {
+    const element = document.createElement('option')
+    element.value = id
+    element.innerText = name
+    genreHtml.appendChild(element)
 }
 
 document.querySelector('[data-search-genres]').appendChild(genreHtml)
 
-const createOption = (option, genreOrAuthor, any)=> {
-    const fragment = document.createDocumentFragment()
-    const firstAuthorElement = document.createElement('option')
-    firstAuthorElement.value = 'any'
-    firstAuthorElement.innerText = option
-    fragment.appendChild(firstAuthorElement)
+const authorsHtml = document.createDocumentFragment()
+const firstAuthorElement = document.createElement('option')
+firstAuthorElement.value = 'any'
+firstAuthorElement.innerText = 'All Authors'
+authorsHtml.appendChild(firstAuthorElement)
 
 for (const [id, name] of Object.entries(authors)) {
     const element = document.createElement('option')
     element.value = id
     element.innerText = name
-   fragment.appendChild(element)
+    authorsHtml.appendChild(element)
 }
 
-return fragment
-}
+document.querySelector('[data-search-authors]').appendChild(authorsHtml)
 
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.querySelector('[data-settings-theme]').value = 'night'
@@ -73,7 +70,7 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 }
 
 document.querySelector('[data-list-button]').innerText = `Show more (${books.length - BOOKS_PER_PAGE})`
-document.querySelector('[data-list-button]').enabled = (matches.length - (page * BOOKS_PER_PAGE)) > 0
+document.querySelector('[data-list-button]').disabled = (matches.length - (page * BOOKS_PER_PAGE)) > 0
 
 document.querySelector('[data-list-button]').innerHTML = `
     <span>Show more</span>
