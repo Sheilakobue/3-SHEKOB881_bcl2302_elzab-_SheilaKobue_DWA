@@ -64,7 +64,6 @@ template.innerHTML=`
     <div class="backdrop"></div>
     `;
 
-
 class bookConnect extends HTMLElement{
     constructor (){
         super();
