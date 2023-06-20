@@ -57,7 +57,7 @@ template.innerHTML = `
   color: rgba(var(--color-dark), 0.4);
 }
 </script>
-    element.classList = 'preview';
+    
     <div class="preview">
     <img class="preview__image" src="" />
     <div class="preview__info">
