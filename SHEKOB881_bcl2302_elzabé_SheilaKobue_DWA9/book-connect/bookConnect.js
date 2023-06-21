@@ -57,8 +57,11 @@ template.innerHTML =`
 .preview__author {
   color: rgba(var(--color-dark), 0.4);
 }
- <div class= "book-connect">
-<img
+ 
+</style>
+
+<div class= "book-connect">
+ <img
       class="preview__image"
       src="${image}"
     />
@@ -66,38 +69,36 @@ template.innerHTML =`
     <div class="preview__info">
       <h3 class="preview__title">${title}</h3>
       <div class="preview__author">${authors[author]}</div>
+     
     </div>
  </div>
-</style>
 `
+// create a custom element
 class BookConnect extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({mode:'open'});
-    this.shadowRoot.appendChild(template.content.cloneNode(true));
-    
+    //this.button = document.querySelector('book-connect')
     //to select items from our custom element
-    this.shadowRoot.querySelector
-   // created a custom element & getting an attribute 
-  this.innerHTML = ``;
+    this.shadowRoot.querySelector('img').innerText = this.getAttribute('name');
 
+    //this.shadowRoot.appendChild(template.content.cloneNode(true));
+   
   }
 }
-// defined the inner html element
-window.customElements.define('book-connect', BookConnect)
 /**
- connectedCallback() {
+  connectedCallback() {
     this.shadowRoot
       .querySelector("#toggle")
       .addEventListener("click", this.toggleInfo);
-  }
+  };
 
   disconnectedCallback() {
     this.shadowRoot
       .querySelector("#toggle")
       .removeEventListener("click", this.toggleInfo);
-  }
-}
+  };
+
 toggleInfo = () => {
     this.showInfo = !this.showInfo;
     this.shadowRoot.querySelector(".preview").style.display = this.showInfo
@@ -110,7 +111,7 @@ toggleInfo = () => {
 
    static get observedAttributes() {
   return ["title", "authors", "author", "image", "blur"];
-}
+};
 
 attributeChangedCallback(name, oldValue, newValue) {
   if (name === "title") {
@@ -127,6 +128,10 @@ attributeChangedCallback(name, oldValue, newValue) {
   }
 }
 
-customElements.define("book-connect", BookConnect);
-export default BookConnect;
-*/
+}
+
+ //defined the inner html element
+ */
+window.customElements.define('book-connect', BookConnect)
+//customElements.define("book-connect", BookConnect);
+//export default BookConnect;
