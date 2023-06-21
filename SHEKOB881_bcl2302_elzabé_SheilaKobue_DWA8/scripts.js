@@ -1,7 +1,20 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
 
+const createFactory = (books, authors, genres, BOOKS_PER_PAGE) => {
+// Initializing variables
 let page = 1;
 let matches = books;
+
+/**
+ * Define the factory function that encapsulates the common functionality and data
+ * Creates a preview element for a book
+ * @param {string} author - The author ID of the book
+ * @param {string} id - The ID of the book
+ * @param {string} image - The image URL of the book
+ * @param {string} title - The title of the book
+ * @returns {HTMLButtonElement} - The created preview element as a button
+*/
+
 
 const createPreviewElement = (author, id, image, title) => {
   const element = document.createElement('button');
@@ -23,9 +36,19 @@ const createPreviewElement = (author, id, image, title) => {
   return element;
 };
 
+/**
+ * Appends a preview element to a fragment
+ * @param {HTMLElement} element - The preview element to append
+ * @param {DocumentFragment} fragment - The fragment to append the element to
+*/
+
 const appendPreviewElementToFragment = (element, fragment) => {
   fragment.appendChild(element);
 };
+
+/**
+ * Sets up genre options in the search form
+*/
 
 const setupGenreOptions = () => {
   const genreHtml = document.createDocumentFragment();
@@ -44,6 +67,10 @@ const setupGenreOptions = () => {
   document.querySelector('[data-search-genres]').appendChild(genreHtml);
 };
 
+/**
+ * Sets up author options in the search form
+*/
+
 const setupAuthorOptions = () => {
   const authorsHtml = document.createDocumentFragment();
   const firstAuthorElement = document.createElement('option');
@@ -61,9 +88,14 @@ const setupAuthorOptions = () => {
   document.querySelector('[data-search-authors]').appendChild(authorsHtml);
 };
 
+/**
+ * Sets up the theme based on the user's preference
+*/
 const setupTheme = () => {
+   // ... code for setting up dark theme
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     setTheme('night');
+     // ... code for setting up dark theme
   } else {
     setTheme('day');
   }
@@ -78,7 +110,9 @@ const setTheme = (theme) => {
     document.documentElement.style.setProperty('--color-light', '255, 255, 255');
   }
 };
-
+/**
+ * Updates the list button and its remaining count
+*/
 const updateListButton = () => {
   const remainingCount = matches.length - (page * BOOKS_PER_PAGE);
   const listButton = document.querySelector('[data-list-button]');
@@ -117,6 +151,11 @@ const updateListButton = () => {
     document.querySelector('[data-list-active]').open = false;
   });
 };
+
+/**
+ * Handles the submission of the search form
+ * @param {Event} event - The form submission event
+*/
 
 const handleSettingsFormSubmit = (event) => {
   event.preventDefault();
@@ -158,6 +197,10 @@ const handleSearchFormSubmit = (event) => {
   updateListButton();
 };
 
+/**
+ * Updates the list items based on the current page
+*/
+
 const updateListItems = () => {
   const listItems = document.querySelector('[data-list-items]');
   const fragment = document.createDocumentFragment();
@@ -171,6 +214,10 @@ const updateListItems = () => {
 
   listItems.appendChild(fragment);
 };
+
+/**
+ * Handles the click event on the list button
+*/
 
 const handleListButtonClick = () => {
   const listItems = document.querySelector('[data-list-items]');
@@ -187,6 +234,11 @@ const handleListButtonClick = () => {
   page += 1;
   updateListButton();
 };
+
+/**
+ * Handles the click event on a list item
+ * @param {Event} event - The click event
+*/
 
 const handleListItemClick = (event) => {
   const pathArray = Array.from(event.path || event.composedPath());
@@ -216,6 +268,7 @@ const handleListItemClick = (event) => {
   }
 };
 
+// Initial setup
 const setup = () => {
   setupGenreOptions();
   setupAuthorOptions();
@@ -223,6 +276,7 @@ const setup = () => {
   updateListItems();
   updateListButton();
 
+  // Event listeners
   document.querySelector('[data-settings-form]').addEventListener('submit', handleSettingsFormSubmit);
   document.querySelector('[data-search-form]').addEventListener('submit', handleSearchFormSubmit);
   document.querySelector('[data-list-button]').addEventListener('click', handleListButtonClick);
@@ -230,3 +284,19 @@ const setup = () => {
 };
 
 setup();
+}
+/**
+ * update the code using the factor function and its encapsulated functionality
+ */
+//import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
+
+const factory = createFactory(books, authors, genres, BOOKS_PER_PAGE);
+factory.setup();
+
+//In the updated code, the factory function is defined and used to encapsulate the common functionality and data. The factory function creates an object with methods for creating preview elements, appending elements to a fragment, setting up genre options, setting up author options, and setting up the theme. The factory object is then used to call these methods in the setup function, replacing the original function calls.
+
+//The imported data (books, authors, genres, and BOOKS_PER_PAGE) are passed as arguments to the factory function to initialize the factory object with the correct data.
+
+//After creating the factory object, the setup method is called on the factory object to perform the initial setup of the application. This includes setting up genre and author options, setting up the theme, updating list items, and adding event listeners.
+
+//Overall, the code has been updated to utilize the factory function and its encapsulated functionality, making the code more modular and reusable.

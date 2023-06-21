@@ -1,8 +1,7 @@
 // Importing necessary data from the data.js file
 
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
-import { bookConnect }from './book-connect/index.js';
-window.customElements.define("book-connect", bookConnect );
+//window.customElements.define("book-connect", bookConnect );
 
 // Initializing variables
 let page = 1;
