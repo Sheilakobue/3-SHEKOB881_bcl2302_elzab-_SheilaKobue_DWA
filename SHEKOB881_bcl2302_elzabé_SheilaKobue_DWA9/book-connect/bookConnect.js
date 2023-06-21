@@ -61,12 +61,8 @@ template.innerHTML =`
 </style>
 
 <div class= "book-connect">
- <img
-      class="preview__image"
-      src="${image}"
-    />
-    
-    <div class="preview__info">
+ <img class="preview__image" src="${image}" />
+      <div class="preview__info">
       <h3 class="preview__title">${title}</h3>
       <div class="preview__author">${authors[author]}</div>
      
@@ -78,15 +74,19 @@ class BookConnect extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({mode:'open'});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
     //this.button = document.querySelector('book-connect')
     //to select items from our custom element
-    this.shadowRoot.querySelector('img').innerText = this.getAttribute('name');
-
-    //this.shadowRoot.appendChild(template.content.cloneNode(true));
+    this.shadowRoot.querySelector('preview__image').innerText = this.getAttribute('image');
+    this.shadowRoot.querySelector(".preview__title").textContent = this.getAttribute(
+      "title");
+    this.shadowRoot.querySelector(".preview__author").textContent = this.getAttribute(
+      "author");
+   
    
   }
-}
-/**
+
+
   connectedCallback() {
     this.shadowRoot
       .querySelector("#toggle")
@@ -131,7 +131,7 @@ attributeChangedCallback(name, oldValue, newValue) {
 }
 
  //defined the inner html element
- */
+
 window.customElements.define('book-connect', BookConnect)
-//customElements.define("book-connect", BookConnect);
-//export default BookConnect;
+customElements.define("book-connect", BookConnect);
+export default BookConnect;
