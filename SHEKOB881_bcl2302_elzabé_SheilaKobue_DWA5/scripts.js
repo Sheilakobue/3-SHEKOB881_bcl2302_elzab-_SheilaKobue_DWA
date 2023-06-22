@@ -1,7 +1,7 @@
 // scripts.js
 //@ts-check
 /**
- * 
+ 
  * @param {string} label 
  * @returns {HTMLElement}
  */

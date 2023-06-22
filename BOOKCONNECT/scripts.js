@@ -1,5 +1,7 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
 
+//@ts-check
+
 const createFactory = (books, authors, genres, BOOKS_PER_PAGE) => {
 // Initializing variables
 let page = 1;
@@ -22,15 +24,12 @@ const createPreviewElement = (author, id, image, title) => {
   element.setAttribute('data-preview', id);
 
   element.innerHTML = `
-    <img
-      class="preview__image"
-      src="${image}"
-    />
+    <img class="preview__image" src="${image}"/>;
     
-    <div class="preview__info">
-      <h3 class="preview__title">${title}</h3>
+    <div class="preview__info">;
+      <h3 class="preview__title">${title}</h3>;
       <div class="preview__author">${authors[author]}</div>
-    </div>
+    </div>;
   `;
 
   return element;
