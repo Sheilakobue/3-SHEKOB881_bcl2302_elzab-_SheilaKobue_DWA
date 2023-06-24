@@ -1,15 +1,50 @@
 /**
- * JavaScript Documentation
- * 
  * This documentation provides an overview of the functionality and usage of the JavaScript code.
- * 
  * Dependencies: data.js
- */
-
-/**
  * Importing dependencies
  */
+
+import { bookConnect } from './book-connect/bookConnect.js';
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
+
+const html = {
+    header: {
+        search: document.querySelector('[data-header-search]'),
+        settings: document.querySelector('[data-header-settings'),
+    },
+  
+    list: {
+        active: document.querySelector('[data-list-active]'),
+        items: document.querySelector('[data-list-items]'),
+        message: document.querySelector('[data-list-message]'),
+        button: document.querySelector('[data-list-button]'),
+        blur: document.querySelector('[data-list-blur]'),
+        image: document.querySelector('[data-list-image]'),
+        title: document.querySelector('[data-list-title]'),
+        subtitle: document.querySelector('[data-list-subtitle]'),
+        description: document.querySelector('[data-list-description]'),
+        close: document.querySelector('[data-list-close]'),
+        
+    },
+  
+    search: {
+        overlay: document.querySelector('[data-search-overlay]'),
+        form: document.querySelector('[data-search-form]'),
+        title: document.querySelector('[data-search-title]'),
+        genres: document.querySelector('[data-search-genres]'),
+        authors: document.querySelector('[data-search-authors]'),
+        cancel: document.querySelector('[data-search-cancel]'),
+    },
+  
+    settings: {
+        overlay: document.querySelector('[data-settings-overlay]'),
+        form: document.querySelector('[data-settings-form]'),
+        theme:document.querySelector('[data-settings-theme]'),
+        cancel:document.querySelector('[data-settings-cancel]'),
+  
+    },
+  };
+  
 
 /**
  * Factory function that encapsulates common functionality and data
@@ -19,7 +54,7 @@ import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
  * @param {number} BOOKS_PER_PAGE - Number of books to display per page
  * @returns {Object} - Factory object with encapsulated functionality
  */
-const createFactory = (books, authors, genres, BOOKS_PER_PAGE) => {
+
   // Initializing variables
   let page = 1;
   let matches = books;
@@ -32,7 +67,8 @@ const createFactory = (books, authors, genres, BOOKS_PER_PAGE) => {
    * @param {string} title - The title of the book
    * @returns {HTMLButtonElement} - The created preview element as a button
    */
-  const createPreviewElement = (author, id, image, title) => {
+  const createFactory = (books, authors, genres, BOOKS_PER_PAGE) => {
+    const createPreviewElement = (author, id, image, title) => {
     const element = document.createElement('button');
     element.classList = 'preview';
     element.setAttribute('data-preview', id);
