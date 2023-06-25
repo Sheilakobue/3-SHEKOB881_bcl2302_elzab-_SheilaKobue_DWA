@@ -4,7 +4,7 @@
  * Importing dependencies
  */
 
-import { bookConnect } from './book-connect/bookConnect.js';
+import './book-connect/bookConnect.js';
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js';
 
 const html = {

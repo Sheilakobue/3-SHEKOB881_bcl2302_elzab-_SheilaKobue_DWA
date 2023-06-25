@@ -1,128 +1,128 @@
 
 //create template
 const template = document.createElement("template");
-template.innerHTML =`
+template.innerHTML = /*html*/`
 <style>
-.preview {
-  border-width: 0;
-  width: 100%;
-  font-family: Roboto, sans-serif;
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  text-align: left;
-  border-radius: 8px;
-  border: 1px solid rgba(var(--color-dark), 0.15);
-  background: rgba(var(--color-light), 1);
-}
-
-@media (min-width: 60rem) {
   .preview {
-    padding: 1rem;
-  }
-}
-
-.preview_hidden {
-  display: none;
-}
-
-.preview:hover {
-  background: rgba(var(--color-blue), 0.05);
-}
-
-.preview__image {
-  width: 48px;
-  height: 70px;
-  object-fit: cover;
-  background: grey;
-  border-radius: 2px;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
-}
-
-.preview__info {
-  padding: 1rem;
-}
-
-.preview__title {
-  margin: 0 0 0.5rem;
-  font-weight: bold;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  color: rgba(var(--color-dark), 0.8)
-}
-
-.preview__author {
-  color: rgba(var(--color-dark), 0.4);
-}
- /* overlay */
-  
-  .overlay {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     border-width: 0;
-    box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);
-    animation-name: enter;
-    animation-duration: 0.6s;
-    z-index: 10;
-    background-color: rgba(var(--color-light), 1);
+    width: 100%;
+    font-family: Roboto, sans-serif;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 8px;
+    border: 1px solid rgba(var(--color-dark), 0.15);
+    background: rgba(var(--color-light), 1);
   }
-  
-  @media (min-width: 30rem) {
-    .overlay {
-      max-width: 30rem;
-      left: 0%;
-      top: 0;
-      border-radius: 8px;;
+
+  @media (min-width: 60rem) {
+    .preview {
+      padding: 1rem;
     }
   }
-  
-  .overlay__form {
-    padding-bottom: 0.5rem;
-    margin: 0 auto;
+
+  .preview_hidden {
+    display: none;
   }
-  
-  .overlay__row {
-    display: flex;
-    gap: 0.5rem;
-    margin: 0 auto;
-    justify-content: center;
+
+  .preview:hover {
+    background: rgba(var(--color-blue), 0.05);
   }
-  
-  .close {
-    font-family: Roboto, sans-serif;
-    background-color: rgba(var(--color-blue), 0.1);
-    transition: background-color 0.1s;
-    border-width: 0;
-    border-radius: 6px;
-    height: 2.75rem;
-    cursor: pointer;
-    width: 50%;
-    color: rgba(var(--color-blue), 1);
-    font-size: 1rem;
-    border: 1px solid rgba(var(--color-blue), 1);
+
+  .preview__image {
+    width: 48px;
+    height: 70px;
+    object-fit: cover;
+    background: grey;
+    border-radius: 2px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+      0px 1px 1px 0px rgba(0, 0, 0, 0.1), 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
   }
-  
-  .close {
-    background-color: rgba(var(--color-blue), 1);
-    color: rgba(var(--color-force-light), 1);
+
+  .preview__info {
+    padding: 1rem;
   }
-  
-  .close:hover {
-    background-color: rgba(var((var(--color-blue))), 0.2);
+
+  .preview__title {
+    margin: 0 0 0.5rem;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: rgba(var(--color-dark), 0.8)
   }
-  
-  
-  .close:hover {
-    background-color: rgba(var(--color-blue), 0.8);
-    color: rgba(var(--color-force-light), 1);
+
+  .preview__author {
+    color: rgba(var(--color-dark), 0.4);
   }
-  
+  /* overlay */
+    
+    .overlay {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-width: 0;
+      box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);
+      animation-name: enter;
+      animation-duration: 0.6s;
+      z-index: 10;
+      background-color: rgba(var(--color-light), 1);
+    }
+    
+    @media (min-width: 30rem) {
+      .overlay {
+        max-width: 30rem;
+        left: 0%;
+        top: 0;
+        border-radius: 8px;;
+      }
+    }
+    
+    .overlay__form {
+      padding-bottom: 0.5rem;
+      margin: 0 auto;
+    }
+    
+    .overlay__row {
+      display: flex;
+      gap: 0.5rem;
+      margin: 0 auto;
+      justify-content: center;
+    }
+    
+    .close {
+      font-family: Roboto, sans-serif;
+      background-color: rgba(var(--color-blue), 0.1);
+      transition: background-color 0.1s;
+      border-width: 0;
+      border-radius: 6px;
+      height: 2.75rem;
+      cursor: pointer;
+      width: 50%;
+      color: rgba(var(--color-blue), 1);
+      font-size: 1rem;
+      border: 1px solid rgba(var(--color-blue), 1);
+    }
+    
+    .close {
+      background-color: rgba(var(--color-blue), 1);
+      color: rgba(var(--color-force-light), 1);
+    }
+    
+    .close:hover {
+      background-color: rgba(var((var(--color-blue))), 0.2);
+    }
+    
+    
+    .close:hover {
+      background-color: rgba(var(--color-blue), 0.8);
+      color: rgba(var(--color-force-light), 1);
+    }
+    
   .overlay__input {
     width: 100%;
     margin-bottom: 0.5rem;
@@ -239,8 +239,8 @@ template.innerHTML =`
   }
 </style>
 
-<div class="book-preview">
-
+<div class="preview">
+<slot></slot>
 <dialog class="overlay" data-list-active>
  <div class="preview">
    <img class="blur" data-list-blur src=""/><img class="image" data-list-image src=""/></div>
@@ -259,7 +259,7 @@ template.innerHTML =`
 `
 
 //creating custom class
-export class bookConnect extends HTMLElement {
+class bookConnect extends HTMLElement {
     #elements = {
       blur: undefined,
       image: undefined,
@@ -329,6 +329,6 @@ connectedCallback() {
       });
     }
   }
-//window.customElements.define('book-preview', bookConnect)
-customElements.define("book-preview", bookConnect);
+window.customElements.define('book-preview', bookConnect)
+//customElements.define("book-preview", bookConnect);
 export default bookConnect;
