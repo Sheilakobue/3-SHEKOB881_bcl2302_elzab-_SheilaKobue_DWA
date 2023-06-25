@@ -42,11 +42,6 @@ body {
     background: rgb(94, 114, 142);
 }
 
-.container_actions {
-    display: flex;
-}
-
-
 .container_button:active {
     background: var(--color-medium-grey);
     transform: translateY(2%);
