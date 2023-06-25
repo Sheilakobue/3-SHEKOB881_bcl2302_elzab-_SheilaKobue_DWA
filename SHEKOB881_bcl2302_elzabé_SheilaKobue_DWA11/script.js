@@ -1,22 +1,25 @@
-class Counter {
-  value = 1;
+// script.js
+const counterDisplay = document.getElementById('counter');
+const addButton = document.getElementById('addButton');
+const subtractButton = document.getElementById('subtractButton');
+const resetButton = document.getElementById('resetButton');
 
-  increase() {
-    this.value +=1
+let counter = 0;
 
+addButton.addEventListener('click', () => {
+  counter++;
+  counterDisplay.textContent = counter;
+});
+
+subtractButton.addEventListener('click', () => {
+  if (counter > 0) {
+    counter--;
+    counterDisplay.textContent = counter;
   }
+});
 
-  decrease(){
-    this.value -=1
-
-  }
-
-  log(){
-    console.log(this.value)
-
-  }
-}
-const instance = new Counter()
-instance.increase()
-instance.decrease()
-instance.log()
+resetButton.addEventListener('click', () => {
+  counter = 0;
+  counterDisplay.textContent = counter;
+  // Show a confirmation message using Shoelace Toast component or any other suitable component
+});
