@@ -21,5 +21,8 @@ subtractButton.addEventListener('click', () => {
 resetButton.addEventListener('click', () => {
   counter = 0;
   counterDisplay.textContent = counter;
+  window.alert('Counter has been reset')
   // Show a confirmation message using Shoelace Toast component or any other suitable component
 });
+
+console.log(counter)
