@@ -32,14 +32,12 @@ function resetCounter() {
 function counterReducer(state = 0, action) {
   // Reducer function for updating the counter state based on actions
   switch (action.type) {
-    case ActionTypes.INCREMENT:
-      return state + STEP_AMOUNT;
-    case ActionTypes.DECREMENT:
-      return state - STEP_AMOUNT;
+    case ActionTypes.INCREMENT:return state + STEP_AMOUNT;
+    case ActionTypes.DECREMENT:return state - STEP_AMOUNT;
     case ActionTypes.RESET:
-      return 0;
+    return 0;
     default:
-      return state;
+    return state;
   }
 }
 

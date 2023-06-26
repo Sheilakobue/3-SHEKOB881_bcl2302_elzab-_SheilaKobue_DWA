@@ -1,7 +1,7 @@
 :root {
     --color-green: #31C48D;
     --color-white: #FFFFFF;
-    --color-dark-grey: #36366b;
+    --color-dark-grey: #363682;
     --color-medium-grey: hsl(240, 43%, 36%);
     --color-light-grey: #9CA3AE;
 }
@@ -38,7 +38,7 @@ body {
 
 /*control*/
 .controls {
-    background: yellow;
+    background: rgb(142, 199, 178);
 }
 
 /*counter*/
