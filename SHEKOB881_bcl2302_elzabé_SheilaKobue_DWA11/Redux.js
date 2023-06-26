@@ -1,97 +1,94 @@
+// redux
+
+// Define constants
+const MAX_NUMBER = 15; // The maximum value the counter can reach
+const MIN_NUMBER = -5; // The minimum value the counter can reach
+const STEP_AMOUNT = 1; // The amount by which the counter value is incremented or decremented
+
 // Define action types
 const ActionTypes = {
-  ADD: 'ADD',
-  SUBTRACT: 'SUBTRACT',
-  RESET: 'RESET'
+  INCREMENT: "INCREMENT", // Action type for incrementing the counter
+  DECREMENT: "DECREMENT", // Action type for decrementing the counter
+  RESET: "RESET", // Action type for resetting the counter
 };
 
+// Define action creators
+function incrementCounter() {
+  // Creates an action object for incrementing the counter
+  return { type: ActionTypes.INCREMENT };
+}
+
+function decrementCounter() {
+  // Creates an action object for decrementing the counter
+  return { type: ActionTypes.DECREMENT };
+}
+
+function resetCounter() {
+  // Creates an action object for resetting the counter
+  return { type: ActionTypes.RESET };
+}
+
 // Define reducer function
-function counterReducer(state = { count: 0 }, action) {
+function counterReducer(state = 0, action) {
+  // Reducer function for updating the counter state based on actions
   switch (action.type) {
-    case ActionTypes.ADD:
-      return { count: state.count + 1 };
-    case ActionTypes.SUBTRACT:
-      return { count: state.count - 1 };
+    case ActionTypes.INCREMENT:
+      return state + STEP_AMOUNT;
+    case ActionTypes.DECREMENT:
+      return state - STEP_AMOUNT;
     case ActionTypes.RESET:
-      return { count: 0 };
+      return 0;
     default:
       return state;
   }
 }
 
-// Define store
-function createStore(reducer) {
-  let state = reducer(undefined, {}); // Initialize state
-  const subscribers = []; // Array to hold subscribers
+// Create a Redux store
+const store = Redux.createStore(counterReducer);
 
-  function getState() {
-    return state;
+// Update the UI with the initial state
+let currentValue = store.getState();
+
+function updateUI() {
+  // Updates the user interface based on the current counter state
+  currentValue = store.getState();
+  number.value = currentValue.toString();
+  if (currentValue <= MIN_NUMBER) {
+    subtract.disabled = true;
+  } else if (currentValue >= MAX_NUMBER) {
+    add.disabled = true;
+  } else {
+    subtract.disabled = false;
+    add.disabled = false;
   }
-
-  function dispatch(action) {
-    state = reducer(state, action);
-    subscribers.forEach(subscriber => subscriber());
-  }
-
-  function subscribe(subscriber) {
-    subscribers.push(subscriber);
-
-    // Return unsubscribe function
-    return function unsubscribe() {
-      const index = subscribers.indexOf(subscriber);
-      if (index !== -1) {
-        subscribers.splice(index, 1);
-      }
-    };
-  }
-
-  return { getState, dispatch, subscribe };
+  console.log(currentValue);
 }
 
-// Create store with counterReducer
-const store = createStore(counterReducer);
+// Subscribe to state changes and update the UI
+store.subscribe(updateUI);
 
-// Test user stories
+// Attach event listeners to the buttons
+const number = document.querySelector('[data-key="number"]');
+const subtract = document.querySelector('[data-key="subtract"]');
+const add = document.querySelector('[data-key="add"]');
 
-// SCENARIO: Increment the counter by one
-console.log('SCENARIO: Increment the counter by one');
-console.log('Initial state:', store.getState());
-
-// Subscribe to state changes and log new state to console
-const unsubscribe1 = store.subscribe(() => {
-  console.log('New state:', store.getState());
+subtract.addEventListener("click", () => {
+  // Dispatches the decrement action when the subtract button is clicked
+  store.dispatch(decrementCounter());
 });
 
-// Dispatch ADD action twice
-store.dispatch({ type: ActionTypes.ADD });
-store.dispatch({ type: ActionTypes.ADD });
-
-unsubscribe1(); // Unsubscribe from state changes
-
-// SCENARIO: Increment the counter by one
-console.log('\nSCENARIO: Increment the counter by one');
-console.log('Initial state:', store.getState());
-
-// Subscribe to state changes and log new state to console
-const unsubscribe2 = store.subscribe(() => {
-  console.log('New state:', store.getState());
+add.addEventListener("click", () => {
+  // Dispatches the increment action when the add button is clicked
+  store.dispatch(incrementCounter());
 });
 
-// Dispatch SUBTRACT action
-store.dispatch({ type: ActionTypes.SUBTRACT });
+const resetButton = document.querySelector("sl-button");
 
-unsubscribe2(); // Unsubscribe from state changes
-
-// SCENARIO: Resetting the Tally Counter
-console.log('\nSCENARIO: Resetting the Tally Counter');
-console.log('Initial state:', store.getState());
-
-// Subscribe to state changes and log new state to console
-const unsubscribe3 = store.subscribe(() => {
-  console.log('New state:', store.getState());
+resetButton.addEventListener("click", () => {
+  // Dispatches the reset action when the reset button is clicked
+  store.dispatch(resetCounter());
+  alert("The counter has been reset.");
 });
 
-// Dispatch RESET action
-store.dispatch({ type: ActionTypes.RESET });
-
-unsubscribe3(); // Unsubscribe from state changes
+// Initialize the UI
+updateUI();
