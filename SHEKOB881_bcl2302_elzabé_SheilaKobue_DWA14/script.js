@@ -1,3 +1,5 @@
+import "./tc-app.js"
+
 // redux
 
 // Define constants
