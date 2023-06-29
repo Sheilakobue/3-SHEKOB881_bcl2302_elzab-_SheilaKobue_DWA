@@ -1,8 +1,8 @@
 :root {
-    --color-green: #31C48D;
-    --color-white: #FFFFFF;
-    --color-dark-grey: #363682;
-    --color-medium-grey: hsl(240, 43%, 36%);
+    --color-green: #0a0d29;
+    --color-white: #85a1cf;
+    --color-dark-grey: #070731;
+    --color-medium-grey: hsl(240, 68%, 16%);
     --color-light-grey: #9CA3AE;
 }
 
@@ -38,7 +38,7 @@ body {
 
 /*control*/
 .controls {
-    background: rgb(142, 199, 178);
+    background: rgb(48, 64, 169);
 }
 
 /*counter*/
@@ -64,14 +64,12 @@ body {
 
 .counter_button {
     background: none;
-    width: 50%;
-    border-width: 0;
+    width: 20%;
     color: var(--color-white);
     font-size: 3rem;
-    height: 10rem;
-    border-bottom: 1px solid var(--color-light-grey);
     transition: transform 0. 3s;
     transform: translateY(0);
+    left:30%
 }
 
 .counter_button:disabled {
