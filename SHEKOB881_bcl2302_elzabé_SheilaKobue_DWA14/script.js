@@ -1,4 +1,4 @@
-import "./tc-app.js"
+
 
 // redux
 
