@@ -14,17 +14,17 @@ export class TallyApp extends LitElement {
 }
 
 * {
-    :box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-    :height: 100vh;
+    height: 100vh;
 }
 
-: body {
+body {
     margin: 0;
     background: var(--color-medium-grey);
-    color: var(--color-blue);
+    color: var(--color-white);
     font-family: roboto, Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
@@ -45,7 +45,7 @@ html {
 
 /*control*/
 .controls {
-    background: rgb(48, 64, 169);
+    background: rgb(70, 82, 155);
 }
 
 /*counter*/
@@ -72,7 +72,7 @@ html {
 .counter_button {
     background: none;
     width: 20%;
-    color: var(--color-white);
+    color: var(--color-p);
     font-size: 3rem;
     transition: transform 0. 3s;
     transform: translateY(0);
@@ -96,14 +96,14 @@ html {
 /*footer*/
 .footer {
     background: var(--color-dark-grey);
-    color: var(--color-light-grey);
+    color: var(--color-dark-grey);
     padding: 2rem;
     font-size: 0, 8rem;
     text-align: center;
 }
 
 .footer_link P {
-    color: var(--color-white);
+    color: var(--color-dark-blue);
 }
   `;
     static properties = {

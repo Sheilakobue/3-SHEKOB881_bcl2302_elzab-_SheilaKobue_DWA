@@ -1,9 +1,9 @@
 :root {
-    --color-green: #0a0d29;
-    --color-white: #85a1cf;
-    --color-dark-grey: #070731;
-    --color-medium-grey: hsl(240, 68%, 16%);
-    --color-light-grey: #9CA3AE;
+    --color-blue: #221857;
+    --color-blue: #85a1cf;
+    --color-dark-blue: #262677;
+    --color-medium-grey: hsl(240, 28%, 61%);
+    --color-light-grey: #35296b;
 }
 
 * {
@@ -38,7 +38,7 @@ body {
 
 /*control*/
 .controls {
-    background: rgb(48, 64, 169);
+    background: rgb(70, 82, 155);
 }
 
 /*counter*/
@@ -65,7 +65,7 @@ body {
 .counter_button {
     background: none;
     width: 20%;
-    color: var(--color-white);
+    color: var(--color-light-grey);
     font-size: 3rem;
     transition: transform 0. 3s;
     transform: translateY(0);
@@ -89,12 +89,12 @@ body {
 /*footer*/
 .footer {
     background: var(--color-dark-grey);
-    color: var(--color-light-grey);
+    color: var(--color-dark-grey);
     padding: 2rem;
     font-size: 0, 8rem;
     text-align: center;
 }
 
 .footer_link P {
-    color: var(--color-white);
+    color: var(--color-dark-blue);
 }
