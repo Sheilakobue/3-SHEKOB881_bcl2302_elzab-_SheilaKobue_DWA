@@ -1,2 +1,2 @@
 import './style.css';
-import './tc-app.js'
+import './tally-app.js'
