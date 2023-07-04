@@ -6,21 +6,18 @@ const STEP_AMOUNT = 5;
 export class TallyApp extends LitElement {
   static styles = css`
 :host {
-    --color-green: #0a0d29;
-    --color-white: #85a1cf;
-    --color-dark-grey: #070731;
-    --color-medium-grey: hsl(240, 68%, 16%);
+    --color-green: #31C48D;
+    --color-white: #FFFFFF;
+    --color-dark-grey: #33333D;
+    --color-medium-grey: hsl(240, 10%, 29%);
     --color-light-grey: #9CA3AE;
 }
-
 * {
     box-sizing: border-box;
 }
-
 html {
     height: 100vh;
 }
-
 body {
     margin: 0;
     background: var(--color-medium-grey);
@@ -31,28 +28,23 @@ body {
     justify-content: space-between;
     height: 100%;
 }
-
 /* header*/
 .header {
     text-align: center;
 }
-
 .header_title {
     font-size: 3rem;
     font-weight: 900;
     color: var(--color-light-grey);
 }
-
 /*control*/
 .controls {
-    background: rgb(70, 82, 155);
+    background:rgb(157, 204, 38);
 }
-
 /*counter*/
 .counter {
     background: var(--color-dark-grey);
-    }
-
+}
 .counter_value {
     width: 100%;
     height: 15rem;
@@ -64,46 +56,40 @@ body {
     border-width: 0;
     border-bottom: 1px solid var(--color-light-grey);
 }
-
 .counter_actions {
     display: flex;
 }
-
 .counter_button {
     background: none;
-    width: 20%;
-    color: var(--color-p);
+    width: 50%;
+    border-width: 0;
+    color: var(--color-white);
     font-size: 3rem;
+    height: 10rem;
+    border-bottom: 1px solid var(--color-light-grey);
     transition: transform 0. 3s;
     transform: translateY(0);
-    left:30%
 }
-
 .counter_button:disabled {
     opacity: 0.2
 }
-
 .counter_button:active {
     background: var(--color-medium-grey);
     transform: translateY(2%);
 }
-
 .counter_button_first {
     border-right: 3px solid var(--color-light-grey);
-    
 }
-
 /*footer*/
 .footer {
     background: var(--color-dark-grey);
-    color: var(--color-dark-grey);
+    color: var(--color-light-grey);
     padding: 2rem;
     font-size: 0, 8rem;
     text-align: center;
 }
-
 .footer_link P {
-    color: var(--color-dark-blue);
+    color: var(--color-white);
 }
   `;
     static properties = {
