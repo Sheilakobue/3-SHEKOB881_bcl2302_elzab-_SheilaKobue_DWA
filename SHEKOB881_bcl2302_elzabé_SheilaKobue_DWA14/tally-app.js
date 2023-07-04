@@ -1,10 +1,27 @@
-import {LitElement, css, html} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
+/**
+ * Import LitElement, css, and html from the Lit library.
+ */
+import { LitElement, css, html } from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
+
+/**
+ * Constants for the maximum, minimum, and step amount of the counter.
+ */
 const MAX_NUMBER = 15;
 const MIN_NUMBER = -5;
 const STEP_AMOUNT = 5;
 
+
+/**
+ * TallyApp class that extends LitElement.
+ */
 export class TallyApp extends LitElement {
+
+   /**
+   * Define the CSS styles for the component.
+   *Custom CSS styles for the TallyApp component 
+   */
   static styles = css`
+  
 :host {
     --color-green: #31C48D;
     --color-white: #FFFFFF;
@@ -92,17 +109,27 @@ body {
     color: var(--color-white);
 }
   `;
+
+  /**
+   * Properties for the TallyApp component.
+   */
     static properties = {
     counterValue: { type: Number },
     counterState: { type: String },
   };
 
+   /**
+   * Constructor for the TallyApp component.
+   */
   constructor() {
     super();
     this.counterValue = 0;
    
   }
 
+   /**
+   * Render function for the TallyApp component.
+   */
   render() {
     return html`
       <header class="header">
@@ -164,17 +191,27 @@ body {
     `;
   }
 
+  /**
+   * Function to open settings.
+   */
   openSettings() {
-    // Implement the logic to open settings
+    
   }
 
+  /**
+   * Function to reset the counter to 0 and set the state to 'Normal'.
+   */
   resetCounter() {
     this.counterValue = 0;
     this.counterState = 'Normal';
+    alert('counter has been reset');
   }
 
+   /**
+   * Function to subtract from the counter value and update the counter state accordingly.
+   */
   subtractValue() {
-    if (this.counterValue > 0) {
+    if (this.counterValue >= MIN_NUMBER) {
       this.counterValue--;
     }
 
@@ -185,6 +222,9 @@ body {
     }
   }
 
+  /**
+   * Function to add to the counter value and update the counter state accordingly.
+   */
   addValue() {
     if (this.counterValue < 10) {
       this.counterValue++;
@@ -198,4 +238,5 @@ body {
   }
 }
 
+// Define the custom element 'tally-app'.
 customElements.define('tally-app', TallyApp);
